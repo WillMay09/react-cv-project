@@ -1,7 +1,7 @@
 import Image from "next/image";
 import EditSection from "../components/editSection";
 export default function Home() {
-  let features = [
+  let generalFeatures = [
     {
       Name: "Name",
       Type: "text",
@@ -17,8 +17,8 @@ export default function Home() {
   ];
   return (
     <div>
-      Hello There
-      <EditSection id="general-info"/>
+      <EditSection title="General Information" features={generalFeatures} />
+      
     </div>
   );
 }
