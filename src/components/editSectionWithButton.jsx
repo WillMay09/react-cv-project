@@ -1,13 +1,18 @@
 import { useState } from "react";
 
 export default function EditSectionWithButton({ title, features }) {
+  
+  //intial value is set to features
   const [fields, setFields] = useState(features);
-
+  const [showModal, setShowModal] = useState(false);
+  
   const handleAddField = () => {
     const newField = { Name: `Field ${fields.length + 1}`, Type: "text" };
+    //need to repopulate the whole array everytime in order for react to detect a change
     setFields([...fields, newField]);
   };
   return (
+    // Give the user the ability to choose what kind of feature they want to add
     <div className="bg-gray-900 text-gray-400 flex flex-col items-center justify-center space-y-4 p-4">
       <h2 className="text-teal-300">{title}</h2>
       <ul>
