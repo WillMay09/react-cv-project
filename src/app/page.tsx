@@ -1,5 +1,6 @@
 import Image from "next/image";
 import EditSection from "../components/editSection";
+import EditSectionWithButton from "../components/editSectionWithButton"
 export default function Home() {
   let generalFeatures = [
     {
@@ -29,10 +30,30 @@ export default function Home() {
       Type: "date",
     },
   ];
+
+  let experienceFeatures = [
+    {
+      Name: "Title",
+      Type: "text",
+    },
+    {
+      Name: "Date",
+      Type: "date",
+    },
+    {
+      Name: "Company",
+      Type: "text",
+    },
+    {
+      Name: "Description",
+      Type: "text",
+    }
+  ];
   return (
     <div>
       <EditSection title="General Information" features={generalFeatures} />
       <EditSection title="Education Information" features={educationFeatures} />
+      <EditSectionWithButton title="Experience" features={experienceFeatures} />
     </div>
   );
 }
