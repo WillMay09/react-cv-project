@@ -17,13 +17,13 @@ export default function EditSectionWithButton({ title, features }) {
   };
   return (
     // Give the user the ability to choose what kind of feature they want to add
-    <div className="bg-gray-900 text-gray-400 flex flex-col items-center justify-center space-y-4 p-4">
+    <div className="bg-gray-900 text-gray-400 flex flex-col items-center justify-center gap-4 p-6 rounded-[1rem]">
       <h2 className="text-teal-300">{title}</h2>
-      <ul className="flex flex-col justify-center items-center gap-4 ">
+      <ul className="flex flex-col justify-center items-center gap-2 ">
         {fields.map((field, index) => (
           <li
             key={`${field.Name}-${index}`}
-            className="flex flex-col justify-center items-center group"
+            className="flex flex-col justify-center items-center group gap-2"
           >
             <label className="w-full max-w-sm text-center">{field.Name}</label>
 
