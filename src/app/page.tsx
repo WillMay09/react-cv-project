@@ -1,22 +1,22 @@
 import Image from "next/image";
 import EditSection from "../components/editSection";
 import EditSectionWithButton from "../components/editSectionWithButton";
-import {useState} from 'react'
+import { useState } from "react";
 export default function Home() {
-  // let generalFeatures = [
-  //   {
-  //     Name: "Name",
-  //     Type: "text",
-  //   },
-  //   {
-  //     Name: "Email",
-  //     Type: "email",
-  //   },
-  //   {
-  //     Name: "Phone",
-  //     Type: "tel",
-  //   },
-  // ];
+  let generalFeatures = [
+    {
+      Name: "Name",
+      Type: "text",
+    },
+    {
+      Name: "Email",
+      Type: "email",
+    },
+    {
+      Name: "Phone",
+      Type: "tel",
+    },
+  ];
   // let educationFeatures = [
   //   {
   //     Name: "School Name",
@@ -62,10 +62,27 @@ export default function Home() {
           title="Education Information"
           features={educationFeatures}
         /> */}
-        <EditSectionWithButton
+
+        {/* <EditSectionWithButton
           title="Experience"
           features={experienceFeatures}
-        />
+        /> */}
+        {!showResume && (
+          <>
+            <EditSection
+              title="General Information"
+              features={generalFeatures}
+              sectionData={generalInfo}
+              setSectionData={setGeneralInfo}
+            />
+            <button
+              className="mt-4 bg-teal-500 text-white px-4 py-2 rounded"
+              onClick={() => setShowResume(true)}
+            >
+              Generate Resume
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
