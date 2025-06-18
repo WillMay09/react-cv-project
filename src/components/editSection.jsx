@@ -1,6 +1,7 @@
 export default function EditSection({title, features, sectionData, setSectionData}) {
   const handleChange = (e, field) =>{
 
+    //repopulate the section data object, add the new field
     setSectionData({...sectionData, [field]: e.target.value});
   }
   return (
@@ -14,6 +15,7 @@ export default function EditSection({title, features, sectionData, setSectionDat
               className="bg-gray-600 border border-gray-400 rounded py-1 px-1 w-full"
               type={feature.Type}
               name={feature.Name}
+              // anytime sectionData[feature.Name] changes, the input updates, onChange fires
               value = {sectionData[feature.Name] || ' '}
               onChange={(e) => handleChange(e, feature.Name)}
             ></input>

@@ -1,4 +1,4 @@
-export default function ResumePreview() {
+export default function ResumePreview({title, data}) {
   return (
     <div className="bg-white text-black p-8 rounded-lg shadow-lg w-full max-w-2xl">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
