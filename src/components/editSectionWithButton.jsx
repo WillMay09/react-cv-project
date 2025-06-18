@@ -16,11 +16,11 @@ export default function EditSectionWithButton({
 
   //add a new input field, updates the fields by creating a new field object
   //and 
-  const handleAddField = () => {
-    const newField = { Name: `Field ${fields.length + 1}`, Type: "text" };
-    //need to repopulate the whole array everytime in order for react to detect a change
-    setFields([...fields, newField]);
-  };
+  // const handleAddField = () => {
+  //   const newField = { Name: `Field ${fields.length + 1}`, Type: "text" };
+  //   //need to repopulate the whole array everytime in order for react to detect a change
+  //   setFields([...fields, newField]);
+  // };
   //filters through the fields and filters out the one the user selected
   const handleDeleteField = (indexToDelete) => {
     setFields(fields.filter((_, index) => index !== indexToDelete));

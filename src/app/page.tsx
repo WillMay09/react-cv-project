@@ -55,7 +55,7 @@ export default function Home() {
   ];
   //general info = object that stores all the inputs in the general information section
   const [generalInfo, setGeneralInfo] = useState({});
-
+  const [educationInfo, setEducationInfo] = useState({});
   const [experienceInfo, setExperienceInfo] = useState({});
   const [showResume, setShowResume] = useState(false);
   return (
@@ -80,12 +80,18 @@ export default function Home() {
             sectionData={generalInfo}
             setSectionData={setGeneralInfo}
           />
-          <button
+          <EditSection
+            title="educationFeatures"
+            features={educationFeatures}
+            sectionData={educationInfo}
+            setSectionData={setEducationInfo}
+          />
+          {/* <button
             className="mt-4 bg-teal-500 text-white px-4 py-2 rounded"
             onClick={() => setShowResume(true)}
           >
             Generate Resume
-          </button>
+          </button> */}
           <EditSectionWithButton
             title="Education Features"
             features={experienceFeatures}
@@ -94,7 +100,9 @@ export default function Home() {
           />
         </div>
         <ResumePreview title="General Information" data={generalInfo} />
+        <ResumePreview title="Education Information" data = {educationInfo}/>
         <ResumePreview title="Experience Information" data={experienceInfo} />
+        
       </div>
     </div>
   );
