@@ -1,108 +1,38 @@
 "use client";
-
-import Image from "next/image";
-import EditSection from "../components/editSection";
-import EditSectionWithButton from "../components/editSectionWithButton";
 import { useState } from "react";
-import ResumePreview from "../components/ResumePreview";
+import editSection from "../components/editSection"
+import EditComponent from "../components/editSection";
 export default function Home() {
-  let generalFeatures = [
-    {
-      Name: "Name",
-      Type: "text",
-    },
-    {
-      Name: "Email",
-      Type: "email",
-    },
-    {
-      Name: "Phone",
-      Type: "tel",
-    },
-  ];
-  let educationFeatures = [
-    {
-      Name: "School Name",
-      Type: "text",
-    },
-    {
-      Name: "Title Of Study",
-      Type: "text",
-    },
-    {
-      Name: "Date of Study",
-      Type: "date",
-    },
+  //general information data
+
+  let generalInformation = [
+    { Title: "Full Name", Type: "text" },
+    { Title: "Skill", Type: "text" },
+    { Title: "Email", Type: "email" },
+    { Title: "Number", Type: "tel" },
   ];
 
-  let experienceFeatures = [
-    {
-      Name: "Title",
-      Type: "text",
-    },
-    {
-      Name: "Date",
-      Type: "date",
-    },
-    {
-      Name: "Company",
-      Type: "text",
-    },
-    {
-      Name: "Description",
-      Type: "text",
-    },
+  let educationInformation = [
+    { Title: "School", Type: "text" },
+    { Title: "Degree", Type: "text" },
+    { Title: "startDate", Type: "date" },
+    { Title: "endDate", Type: "date" },
   ];
-  //general info = object that stores all the inputs in the general information section
-  const [generalInfo, setGeneralInfo] = useState({});
-  const [educationInfo, setEducationInfo] = useState({});
-  const [experienceInfo, setExperienceInfo] = useState({});
-  const [showResume, setShowResume] = useState(false);
+
+  let experienceInformation = [
+    { Title: "Job Position", Type: "text" },
+    { Title: "Company", Type: "text" },
+    { Title: "startDate", Type: "date" },
+    { Title: "endDate", Type: "date" },
+  ];
+  const [generalData, setGeneralData] = useState({});
+  const [educationData, setEducationData] = useState({});
+  const [experienceData, setExperienceData] = useState({});
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 space-y-8">
-      <h1 className="text-3xl font-bold text-teal-400">CV Builder</h1>
-      <div className="flex flex-wrap w-full max-w-6xl gap-8">
-        {/* <EditSection title="General Information" features={generalFeatures} />
-        <EditSection
-          title="Education Information"
-          features={educationFeatures}
-        /> */}
-
-        {/* <EditSectionWithButton
-          title="Experience"
-          features={experienceFeatures}
-        /> */}
-
-        <div>
-          <EditSection
-            title="General Information"
-            features={generalFeatures}
-            sectionData={generalInfo}
-            setSectionData={setGeneralInfo}
-          />
-          <EditSection
-            title="educationFeatures"
-            features={educationFeatures}
-            sectionData={educationInfo}
-            setSectionData={setEducationInfo}
-          />
-          {/* <button
-            className="mt-4 bg-teal-500 text-white px-4 py-2 rounded"
-            onClick={() => setShowResume(true)}
-          >
-            Generate Resume
-          </button> */}
-          <EditSectionWithButton
-            title="Education Features"
-            features={experienceFeatures}
-            sectionData={experienceInfo}
-            setSectionData={setExperienceInfo}
-          />
-        </div>
-        <ResumePreview title="General Information" data={generalInfo} />
-        <ResumePreview title="Education Information" data = {educationInfo}/>
-        <ResumePreview title="Experience Information" data={experienceInfo} />
-        
+    <div className="h-[100vh] p-[5rem]">
+      <div className="flex w-full h-full border border-red-400">
+       <EditComponent title={"General Information"} features={generalInformation} sectionData={generalData} setSectionData={setGeneralData}/>
+       <EditComponent title={"Education Information"} features={educationInformation} sectionData={educationData} setSectionData={setEducationData}/>
       </div>
     </div>
   );

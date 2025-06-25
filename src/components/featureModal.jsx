@@ -41,7 +41,9 @@ export default function CustomizeSectionModal({fields, setFields}) {
       >
         Customize Fields
       </button>
+      {/* Conditional Render */}
       {showModal && (
+        // outermost div contains css that represents it's location on the screen
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded shadow-lg w-80">
             <h2 className="text-lg font-bold mb-4">Add A Custom Field</h2>
