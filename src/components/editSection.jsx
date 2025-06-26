@@ -21,7 +21,7 @@ export default function EditComponent({
             <label className="text-sm">{feature.Title}</label>
             <input
               type={feature.Type}
-              name={feature.Type}
+              name={feature.Title}
               className="rounded-md bg-slate-700 border-2 w-full min-h-8"
               value={sectionData[feature.Title || ""]}
               onChange={(e) => handleUpdate(e.target.value, feature.Name)}
