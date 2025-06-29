@@ -22,7 +22,7 @@ export default function EditComponent({
             <input
               type={feature.Type}
               name={feature.Title}
-              className="rounded-md bg-slate-700 border-2 w-full min-h-8"
+              className="rounded-md bg-slate-700 border-2 w-full min-h-8 px-2"
               value={sectionData[feature.Title || ""]}
               onChange={(e) => handleUpdate(e.target.value, feature.Name)}
             />

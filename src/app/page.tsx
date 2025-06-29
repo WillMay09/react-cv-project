@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import editSection from "../components/editSection";
 import EditComponent from "../components/editSection";
+import EditComponentWithCustomization from "../components/editSectionWithCustomization";
+
 export default function Home() {
   //general information data
 
@@ -31,7 +32,9 @@ export default function Home() {
   return (
     <div className="h-[100vh] p-[5rem]">
       <div className="flex flex-col items-center w-full h-full border border-red-400">
-        <h1 className="text-teal-300 mt-2 mb-4 text-2xl font-bold">My CV Builder</h1>
+        <h1 className="text-teal-300 mt-2 mb-4 text-2xl font-bold">
+          My CV Builder
+        </h1>
         <div className="flex h-full">
           <EditComponent
             title={"General Information"}
@@ -44,6 +47,12 @@ export default function Home() {
             features={educationInformation}
             sectionData={educationData}
             setSectionData={setEducationData}
+          />
+          <EditComponentWithCustomization
+            title={"Experience Information"}
+            features={experienceInformation}
+            sectionData={experienceData}
+            setSectionData={setExperienceData}
           />
         </div>
       </div>
