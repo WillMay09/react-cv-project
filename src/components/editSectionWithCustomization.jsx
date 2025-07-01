@@ -1,4 +1,5 @@
 "use client";
+import {useState} from 'react'
 import FeatureModal from "../components/featureModal";
 export default function EditComponentWithCustomization({
   title,
@@ -6,19 +7,35 @@ export default function EditComponentWithCustomization({
   sectionData,
   setSectionData,
 }) {
-  const handleChange = (targetValue, featureTitle) => {
-    const newData = { Title: featureTitle, Value: targetValue };
 
-    setSectionData({ ...sectionData, newData });
+  const [addedFields, setAddedFields] = useState(features)
+  const handleNewField = (targetValue, featureTitle) => {
+    const newField = {Title: `Field ${addedFields.length+1}`, Type: "text"};
+    setAddedFields([...addedFields, newField]);
   };
+
+  //indexToDelete is provided by the onChange handle by the jsx element
+  const handleDeleteField = (indexToDelete) => {
+
+    setAddedFields(addedFields.filter((_,index) =>index !== indexToDelete));
+  }
+
+  //updates section data for a given field name when a user inputs something
+
+  const handleChange = (userInput, fieldName) => {
+    const newData = { Title: fieldName, Value: userInput };
+
+    setSectionData({ ...sectionData, newData});
+   
+  }
   return (
     <>
       <div className="text-gray-400 bg-gray-950 rounded-[1rem] px-3">
         <h2 className="text-teal-300 text-center pb-1 pt-4 ">{title}</h2>
         <ul className="flex flex-col gap-4 p-4">
           {/* implicit return with () rather than {} */}
-          {features.map((feature) => (
-            <li key={feature.Title}>
+          {addedFields.map((feature, index) => (
+            <li key={`${feature.Name}-${index}`}>
               <label className="text-sm">{feature.Title}</label>
               <input
                 type={feature.Type}
@@ -31,7 +48,7 @@ export default function EditComponentWithCustomization({
           ))}
         </ul>
         {/* Modal can be opened with a button */}
-        <FeatureModal features={features} />
+        <FeatureModal addFeatures={addedFields} setAddedFeatures={setAddedFields} />
       </div>
     </>
   );

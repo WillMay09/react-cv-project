@@ -1,33 +1,35 @@
 "use client";
 import { useState } from "react";
-export default function FeatureModal({ features }) {
+export default function FeatureModal({ addFeatures, setAddedFeatures }) {
   const [showModal, setShowModal] = useState(false);
   const [userInput, setUserInput] = useState("");
-  const [userInputType, setUserInputType] = useState("");
+  const [userInputType, setUserInputType] = useState("text");
 
   //handle change functions, need to add to the new features.
   const handleUpdate = () => {
     const newInputValue = userInput.trim();
     //edge case
-    if (newInputValue == "") {
+    if (newInputValue === "") {
       return;
     }
-    if (userInputType == "") {
+    if (userInputType === "") {
       return;
     }
     const newField = {
-      Title: userInput,
+      Title: newInputValue,
       Type: userInputType,
     };
 
     //add new field to features array
-    features.push(newField);
+    setAddedFeatures(...addFeatures, newField)
 
     //reset hooks
-    setShowModal(false);
+
     setUserInput("");
-    setUserInputType("");
+    setUserInputType("text");
+    setShowModal(false);
   };
+  //conditional render
   return (
     <>
       <div className="flex justify-center">
@@ -39,28 +41,32 @@ export default function FeatureModal({ features }) {
         </button>
       </div>
       {showModal ? (
-        <div className="bg-white w-full h-full rounded-[1rem] bg-opacity-50">
-          <div className="fixed right-[50] bottom-[50]  border-gray-600 border-black border-2 rounded-[1rem]">
+        <div className="fixed left-0 top-0 w-full h-full bg-white flex justify-center items-center bg-opacity-80">
+          <div className="flex flex-col p-3 gap-2 bg-gray-600 border-black border-2 rounded-[1rem]">
             <input
               value={userInput}
+              className="rounded border-black border-2"
               onChange={(e) => setUserInput(e.target.value)}
             />
-            <selection
+            <select
               value={userInputType}
               onChange={(e) => setUserInputType(e.target.value)}
+              className="rounded border-black border-2"
             >
               <option value="text">text</option>
               <option value="email">email</option>
               <option value="date">date</option>
               <option value="tel">telephone</option>
-            </selection>
+            </select>
+            <div className='flex justify-center'>
+              <button
+                className="bg-slate-600 rounded-[1rem] text-md"
+                onClick={handleUpdate}
+              >
+                Add Features
+              </button>
+            </div>
           </div>
-          <button
-            className="bg-slate-600 rounded-[1rem] text-md"
-            onChange={() => handleUpdate()}
-          >
-            Add Features
-          </button>
         </div>
       ) : null}
     </>

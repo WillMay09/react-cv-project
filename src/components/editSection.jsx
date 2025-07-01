@@ -1,11 +1,12 @@
 "use client"
-
+import {useState} from 'react'
 export default function EditComponent({
   title,
   features,
   sectionData,
   setSectionData,
 }) {
+ 
   const handleUpdate = (userInput, fieldName) => {
     const newData = { Title: fieldName, Value: userInput };
 
