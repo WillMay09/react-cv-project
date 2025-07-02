@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-export default function FeatureModal({ addFeatures, setAddedFeatures }) {
+export default function FeatureModal({ addedFeatures, setAddedFeatures }) {
   const [showModal, setShowModal] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [userInputType, setUserInputType] = useState("text");
@@ -21,7 +21,7 @@ export default function FeatureModal({ addFeatures, setAddedFeatures }) {
     };
 
     //add new field to features array
-    setAddedFeatures(...addFeatures, newField)
+    setAddedFeatures([...addedFeatures, newField]);
 
     //reset hooks
 
@@ -58,13 +58,20 @@ export default function FeatureModal({ addFeatures, setAddedFeatures }) {
               <option value="date">date</option>
               <option value="tel">telephone</option>
             </select>
-            <div className='flex justify-center'>
+            <div className="flex justify-center gap-4">
               <button
                 className="bg-slate-600 rounded-[1rem] text-md"
                 onClick={handleUpdate}
               >
                 Add Features
               </button>
+              <button
+                className="bg-slate-600 rounded text-md text-red-500"
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
+              
             </div>
           </div>
         </div>

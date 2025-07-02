@@ -48,7 +48,7 @@ export default function EditComponentWithCustomization({
           ))}
         </ul>
         {/* Modal can be opened with a button */}
-        <FeatureModal addFeatures={addedFields} setAddedFeatures={setAddedFields} />
+        <FeatureModal addedFeatures={addedFields} setAddedFeatures={setAddedFields} />
       </div>
     </>
   );
