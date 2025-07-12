@@ -2,7 +2,7 @@
 import { useState } from "react";
 import EditComponent from "../components/editSection";
 import EditComponentWithCustomization from "../components/editSectionWithCustomization";
-
+import ResumePreview from "../components/ResumePreview";
 export default function Home() {
   //general information data
 
@@ -35,25 +35,34 @@ export default function Home() {
         <h1 className="text-teal-300 mt-2 mb-4 text-2xl font-bold">
           My CV Builder
         </h1>
-        <div className="flex h-full">
-          <EditComponent
-            title={"General Information"}
-            features={generalInformation}
-            sectionData={generalData}
-            setSectionData={setGeneralData}
-          />
-          <EditComponent
-            title={"Education Information"}
-            features={educationInformation}
-            sectionData={educationData}
-            setSectionData={setEducationData}
-          />
-          <EditComponentWithCustomization
-            title={"Experience Information"}
-            features={experienceInformation}
-            sectionData={experienceData}
-            setSectionData={setExperienceData}
-          />
+        <div className="flex flex-row items-center w-full h-full gap-2">
+          <div className="flex h-full">
+            <EditComponent
+              title={"General Information"}
+              features={generalInformation}
+              sectionData={generalData}
+              setSectionData={setGeneralData}
+            />
+            <EditComponent
+              title={"Education Information"}
+              features={educationInformation}
+              sectionData={educationData}
+              setSectionData={setEducationData}
+            />
+            <EditComponentWithCustomization
+              title={"Experience Information"}
+              features={experienceInformation}
+              sectionData={experienceData}
+              setSectionData={setExperienceData}
+            />
+          </div>
+
+          <div>
+            <ResumePreview
+              title={"General Information"}
+              sectionData={generalData}
+            />
+          </div>
         </div>
       </div>
     </div>

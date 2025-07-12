@@ -1,5 +1,5 @@
 "use client";
-import {useState} from 'react'
+import { useState } from "react";
 import FeatureModal from "../components/featureModal";
 export default function EditComponentWithCustomization({
   title,
@@ -7,27 +7,24 @@ export default function EditComponentWithCustomization({
   sectionData,
   setSectionData,
 }) {
-
-  const [addedFields, setAddedFields] = useState(features)
+  const [addedFields, setAddedFields] = useState(features);
   const handleNewField = (targetValue, featureTitle) => {
-    const newField = {Title: `Field ${addedFields.length+1}`, Type: "text"};
+    const newField = { Title: `Field ${addedFields.length + 1}`, Type: "text" };
     setAddedFields([...addedFields, newField]);
   };
 
   //indexToDelete is provided by the onChange handle by the jsx element
   const handleDeleteField = (indexToDelete) => {
-
-    setAddedFields(addedFields.filter((_,index) =>index !== indexToDelete));
-  }
+    setAddedFields(addedFields.filter((_, index) => index !== indexToDelete));
+  };
 
   //updates section data for a given field name when a user inputs something
 
   const handleChange = (userInput, fieldName) => {
     const newData = { Title: fieldName, Value: userInput };
 
-    setSectionData({ ...sectionData, newData});
-   
-  }
+    setSectionData({ ...sectionData, newData });
+  };
   return (
     <>
       <div className="text-gray-400 bg-gray-950 rounded-[1rem] px-3">
@@ -37,18 +34,29 @@ export default function EditComponentWithCustomization({
           {addedFields.map((feature, index) => (
             <li key={`${feature.Name}-${index}`}>
               <label className="text-sm">{feature.Title}</label>
-              <input
-                type={feature.Type}
-                name={feature.Title}
-                className="rounded-md bg-slate-700 border-2 w-full min-h-8 px-2"
-                value={sectionData[feature.Title || ""]}
-                onChange={(e) => handleChange(e.target.value, feature.Title)}
-              ></input>
+              <div className="relative w-full max-w-sm">
+                <input
+                  type={feature.Type}
+                  name={feature.Title}
+                  className="rounded-md bg-slate-700 border-2 w-full min-h-8 px-2"
+                  value={sectionData[feature.Title || ""]}
+                  onChange={(e) => handleChange(e.target.value, feature.Title)}
+                ></input>
+                <button
+                  className="absolute h-full mx-2 text-white opacity-0 hover:opacity-100 transition-opacity"
+                  onClick={() => handleDeleteField(index)}
+                >
+                  x
+                </button>
+              </div>
             </li>
           ))}
         </ul>
         {/* Modal can be opened with a button */}
-        <FeatureModal addedFeatures={addedFields} setAddedFeatures={setAddedFields} />
+        <FeatureModal
+          addedFeatures={addedFields}
+          setAddedFeatures={setAddedFields}
+        />
       </div>
     </>
   );
