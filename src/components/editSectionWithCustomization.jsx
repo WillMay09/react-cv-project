@@ -23,7 +23,9 @@ export default function EditComponentWithCustomization({
   const handleChange = (userInput, fieldName) => {
     const newData = { Title: fieldName, Value: userInput };
 
+    //assumes section data is an object, spreads over the object and adds another field
     setSectionData({ ...sectionData, newData });
+    
   };
   return (
     <>
@@ -39,7 +41,7 @@ export default function EditComponentWithCustomization({
                   type={feature.Type}
                   name={feature.Title}
                   className="rounded-md bg-slate-700 border-2 w-full min-h-8 px-2"
-                  value={sectionData[feature.Title || ""]}
+                  value={sectionData[feature.Title] || ""}
                   onChange={(e) => handleChange(e.target.value, feature.Title)}
                 ></input>
                 <button
