@@ -8,10 +8,10 @@ export default function Home() {
   //general information data
 
   let generalInformation = [
-    { Title: "Full Name", Type: "text" },
-    { Title: "Skill", Type: "text" },
-    { Title: "Email", Type: "email" },
+    { Title: "Name", Type: "text" },
     { Title: "Number", Type: "tel" },
+    { Title: "Email", Type: "email" },
+    { Title: "LinkedIn", Type: "text" },
   ];
 
   let educationInformation = [
@@ -30,7 +30,7 @@ export default function Home() {
   const [generalData, setGeneralData] = useState({});
   const [educationData, setEducationData] = useState({});
   const [experienceData, setExperienceData] = useState({});
-  const [activeState, setActiveState] = useState(null)//controls which one is open
+  const [activeState, setActiveState] = useState(null); //controls which one is open
 
   return (
     <div className="h-[100vh] p-[5rem]">
@@ -39,7 +39,7 @@ export default function Home() {
           My CV Builder
         </h1>
         <div className="flex flex-row items-center w-full h-full gap-2">
-          <div className="flex-col gap-[1rem] h-full">
+          <div className="flex-col gap-[1rem] h-full w-1/2">
             <EditComponent
               title={"General Information"}
               features={generalInformation}
@@ -66,7 +66,7 @@ export default function Home() {
             />
           </div>
 
-          <div>
+          <div className="w-1/2 h-full border-2 border-black">
             <ResumePreview
               title={"General Information"}
               sectionData={generalData}

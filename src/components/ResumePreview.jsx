@@ -6,16 +6,36 @@ import { useState } from "react";
 export default function ResumePreview({ title, sectionData }) {
   console.log("Section Data :", JSON.stringify(sectionData, null, 2));
   return (
-    <div className="flex flex-col w-full">
-      <h1>{title}</h1>
-      <ul className="bg-white border-black border-2 rounded-[1rem]">
-        {Object.entries(sectionData).map(([key, value]) => (
-          <li key={key} className="flex gap-1">
-            <h5>{key} </h5>
-            <p>{value}</p>
-          </li>
-        ))}
-      </ul>
+    <div className="flex flex-col w-full align-middle">
+      {sectionData.Name && sectionData.Name.trim() !== "" && (
+        <h1 className="font-bold text-3xl">{sectionData.Name}</h1>
+      )}
+      <div className="flex flex-row justify-evenly border-t-3 border-black">
+        <div className="">
+          {sectionData.Number && sectionData.Number.trim() !== "" && (
+            <p>{sectionData.Number}</p>
+          )}
+        </div>
+        <div>
+          {sectionData.Email && sectionData.Email.trim() !== "" && (
+            <p>{sectionData.Email}</p>
+          )}
+        </div>
+        <div>
+          {sectionData.LinkedIn && sectionData.LinkedIn.trim() !== "" && (
+            <p>{sectionData.LinkedIn}</p>
+          )}
+        </div>
+      </div>
     </div>
   );
+
+  //   <ul className="bg-white border-black border-2 rounded-[1rem]">
+  // {Object.entries(sectionData).map(([key, value]) => (
+  //     <li key={key} className="flex gap-1">
+  //       <h5>{key} </h5>
+  //       <p>{value}</p>
+  //     </li>
+  //   ))}
+  // </ul>
 }
