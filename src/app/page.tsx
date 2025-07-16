@@ -3,7 +3,8 @@ import { useState } from "react";
 
 import EditComponent from "../components/editSection";
 import EditComponentWithCustomization from "../components/editSectionWithCustomization";
-import ResumePreview from "../components/ResumePreview";
+import ResumeBody from "../components/ResumeBody";
+import ResumeHeading from "../components/ResumePreview";
 export default function Home() {
   //general information data
 
@@ -17,8 +18,9 @@ export default function Home() {
   let educationInformation = [
     { Title: "School", Type: "text" },
     { Title: "Degree", Type: "text" },
+    {Title: "Location", Type: "text"},
     { Title: "startDate", Type: "date" },
-    { Title: "endDate", Type: "date" },
+    
   ];
 
   let experienceInformation = [
@@ -66,11 +68,13 @@ export default function Home() {
             />
           </div>
 
-          <div className="w-1/2 h-full border-2 border-black">
-            <ResumePreview
+          <div className="w-1/2 h-full border-2 flex-col gap-4 border-black p-10">
+            <ResumeHeading
               title={"General Information"}
               sectionData={generalData}
+              
             />
+            <ResumeBody title={"Eduction Information"} sectionData={educationData}/>
           </div>
         </div>
       </div>

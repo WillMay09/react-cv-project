@@ -3,25 +3,25 @@
 import { features } from "process";
 import { useState } from "react";
 
-export default function ResumePreview({ title, sectionData }) {
+export default function ResumeHeading({ title, sectionData }) {
   console.log("Section Data :", JSON.stringify(sectionData, null, 2));
   return (
-    <div className="flex flex-col w-full align-middle">
+    <div className="flex flex-col w-full text-center">
       {sectionData.Name && sectionData.Name.trim() !== "" && (
         <h1 className="font-bold text-3xl">{sectionData.Name}</h1>
       )}
-      <div className="flex flex-row justify-evenly border-t-3 border-black">
-        <div className="">
+      <div className="flex flex-row justify-evenly border-t-2 border-black">
+        <div className="flex-1 text-center">
           {sectionData.Number && sectionData.Number.trim() !== "" && (
             <p>{sectionData.Number}</p>
           )}
         </div>
-        <div>
+        <div className="flex-1 text-center">
           {sectionData.Email && sectionData.Email.trim() !== "" && (
             <p>{sectionData.Email}</p>
           )}
         </div>
-        <div>
+        <div className="flex-1 text-center">
           {sectionData.LinkedIn && sectionData.LinkedIn.trim() !== "" && (
             <p>{sectionData.LinkedIn}</p>
           )}
