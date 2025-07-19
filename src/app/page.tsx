@@ -3,8 +3,10 @@ import { useState } from "react";
 
 import EditComponent from "../components/editSection";
 import EditComponentWithCustomization from "../components/editSectionWithCustomization";
-import ResumeBody from "../components/ResumeBody";
+import ResumeBody from "../components/ResumeBodyEducation";
 import ResumeHeading from "../components/ResumePreview";
+import resumeBodyCustom from "../components/ResumeBodyCustom"
+import ResumeBodyCustom from "../components/ResumeBodyCustom";
 export default function Home() {
   //general information data
 
@@ -24,14 +26,14 @@ export default function Home() {
   ];
 
   let experienceInformation = [
-    { Title: "Job Position", Type: "text" },
-    { Title: "Company", Type: "text" },
-    { Title: "startDate", Type: "date" },
-    { Title: "endDate", Type: "date" },
+    { Title: "Job Position", Type: "text", Role: "title"},
+    { Title: "Company", Type: "text", Role: "sub-title" },
+    { Title: "startDate", Type: "date", Role: "startDate" },
+    { Title: "endDate", Type: "date", Role: "endDate" },
   ];
   const [generalData, setGeneralData] = useState({});
   const [educationData, setEducationData] = useState({});
-  const [experienceData, setExperienceData] = useState({});
+  const [experienceData, setExperienceData] = useState([]);
   const [activeState, setActiveState] = useState(null); //controls which one is open
 
   return (
@@ -75,6 +77,7 @@ export default function Home() {
               
             />
             <ResumeBody title={"Eduction Information"} sectionData={educationData}/>
+            <ResumeBodyCustom title = {"Experience Information"} sectionData= {experienceData} />
           </div>
         </div>
       </div>

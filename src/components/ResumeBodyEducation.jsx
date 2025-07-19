@@ -1,4 +1,4 @@
-export default function ResumeBody({ title, sectionData }) {
+export default function ResumeBodyEducation({ title, sectionData }) {
   return (
     <>
       <div className="flex flex-col">

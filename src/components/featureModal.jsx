@@ -4,7 +4,7 @@ export default function FeatureModal({ addedFeatures, setAddedFeatures }) {
   const [showModal, setShowModal] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [userInputType, setUserInputType] = useState("text");
-
+  const [userInputRole, setUserInputRole] = useState("Title");
   //handle change functions, need to add to the new features.
   const handleUpdate = () => {
     const newInputValue = userInput.trim();
@@ -18,6 +18,7 @@ export default function FeatureModal({ addedFeatures, setAddedFeatures }) {
     const newField = {
       Title: newInputValue,
       Type: userInputType,
+      Role: userInputRole
     };
 
     //add new field to features array
@@ -58,6 +59,19 @@ export default function FeatureModal({ addedFeatures, setAddedFeatures }) {
               <option value="date">date</option>
               <option value="tel">telephone</option>
             </select>
+            <select
+              value={userInputRole}
+              onChange={(e) => {
+                setUserInputRole(e.target.value);
+              }}
+              className="rounded border-black border-2"
+            >
+              <option value="title">Title</option>
+              <option value="sub-title">Sub-Title</option>
+              <option value = "start-date">Start-Date</option>
+              <option value="end-date">End-Date</option>
+              <option value="description">Description</option>
+            </select>
             <div className="flex justify-center gap-4">
               <button
                 className="bg-slate-600 rounded-[1rem] text-md"
@@ -71,7 +85,6 @@ export default function FeatureModal({ addedFeatures, setAddedFeatures }) {
               >
                 Close
               </button>
-              
             </div>
           </div>
         </div>
