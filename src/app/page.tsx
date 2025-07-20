@@ -26,14 +26,21 @@ export default function Home() {
   ];
 
   let experienceInformation = [
-    { Title: "Job Position", Type: "text", Role: "title"},
-    { Title: "Company", Type: "text", Role: "sub-title" },
-    { Title: "startDate", Type: "date", Role: "startDate" },
-    { Title: "endDate", Type: "date", Role: "endDate" },
+    { Title: "jobPosition", Type: "text"},
+    { Title: "company", Type: "text"},
+    { Title: "startDate", Type: "date"},
+    { Title: "endDate", Type: "date"},
+    { Title: "description", Type: "textArea"}
   ];
   const [generalData, setGeneralData] = useState({});
   const [educationData, setEducationData] = useState({});
-  const [experienceData, setExperienceData] = useState([]);
+  const [experienceData, setExperienceData] = useState([{
+    "jobTitle": "",
+    "company" : "",
+    "startDate": "",
+    "endDate": "",
+    "description": ""
+  }]);
   const [activeState, setActiveState] = useState(null); //controls which one is open
 
   return (
@@ -61,7 +68,7 @@ export default function Home() {
               setActiveState={setActiveState}
             />
             <EditComponentWithCustomization
-              title={"Experience Information"}
+              title={""}
               features={experienceInformation}
               sectionData={experienceData}
               setSectionData={setExperienceData}
@@ -77,7 +84,7 @@ export default function Home() {
               
             />
             <ResumeBody title={"Eduction Information"} sectionData={educationData}/>
-            <ResumeBodyCustom title = {"Experience Information"} sectionData= {experienceData} />
+            {/* <ResumeBodyCustom title = {"Experience Information"} sectionData= {experienceData} /> */}
           </div>
         </div>
       </div>
