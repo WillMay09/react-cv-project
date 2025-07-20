@@ -5,7 +5,7 @@ import EditComponent from "../components/editSection";
 import EditComponentWithCustomization from "../components/editSectionWithCustomization";
 import ResumeBody from "../components/ResumeBodyEducation";
 import ResumeHeading from "../components/ResumePreview";
-import resumeBodyCustom from "../components/ResumeBodyCustom"
+import resumeBodyCustom from "../components/ResumeBodyCustom";
 import ResumeBodyCustom from "../components/ResumeBodyCustom";
 export default function Home() {
   //general information data
@@ -20,27 +20,28 @@ export default function Home() {
   let educationInformation = [
     { Title: "School", Type: "text" },
     { Title: "Degree", Type: "text" },
-    {Title: "Location", Type: "text"},
+    { Title: "Location", Type: "text" },
     { Title: "startDate", Type: "date" },
-    
   ];
 
   let experienceInformation = [
-    { Title: "jobPosition", Type: "text"},
-    { Title: "company", Type: "text"},
-    { Title: "startDate", Type: "date"},
-    { Title: "endDate", Type: "date"},
-    { Title: "description", Type: "textArea"}
+    { Title: "jobPosition", Type: "text" },
+    { Title: "company", Type: "text" },
+    { Title: "startDate", Type: "date" },
+    { Title: "endDate", Type: "date" },
+    { Title: "description", Type: "textArea" },
   ];
   const [generalData, setGeneralData] = useState({});
   const [educationData, setEducationData] = useState({});
-  const [experienceData, setExperienceData] = useState([{
-    "jobTitle": "",
-    "company" : "",
-    "startDate": "",
-    "endDate": "",
-    "description": ""
-  }]);
+  const [experienceData, setExperienceData] = useState([
+    {
+      jobTitle: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      description: "",
+    },
+  ]);
   const [activeState, setActiveState] = useState(null); //controls which one is open
 
   return (
@@ -68,7 +69,7 @@ export default function Home() {
               setActiveState={setActiveState}
             />
             <EditComponentWithCustomization
-              title={""}
+              title={"Experience"}
               features={experienceInformation}
               sectionData={experienceData}
               setSectionData={setExperienceData}
@@ -81,10 +82,15 @@ export default function Home() {
             <ResumeHeading
               title={"General Information"}
               sectionData={generalData}
-              
             />
-            <ResumeBody title={"Eduction Information"} sectionData={educationData}/>
-            {/* <ResumeBodyCustom title = {"Experience Information"} sectionData= {experienceData} /> */}
+            <ResumeBody
+              title={"Eduction Information"}
+              sectionData={educationData}
+            />
+            <ResumeBodyCustom
+              title={"Experience Information"}
+              sectionData={experienceData}
+            />
           </div>
         </div>
       </div>

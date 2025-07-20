@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
+// import FeatureModal from "../components/FeatureModal";
 export default function EditComponentWithCustomization({
   title,
   features,
@@ -10,12 +15,13 @@ export default function EditComponentWithCustomization({
 
   // Update a specific field inside a specific job object
   const handleChange = (value, fieldName, jobIndex) => {
+    //clone current sectionData
     const updatedData = [...sectionData];
     //updating the data for that specific job
     updatedData[jobIndex][fieldName] = value;
     setSectionData(updatedData);
   };
-  
+
   const addJobEntry = () => {
     const newJob = Object.fromEntries(
       addedFields.map((field) => [field.Title, ""])
@@ -31,7 +37,13 @@ export default function EditComponentWithCustomization({
   const isOpen = activeState === title;
 
   const toggleActive = () => {
-    setActiveState(isOpen ? null : title);
+    //if this component is open, setActiveState goes to null and closes it
+    if (isOpen) {
+      setActiveState(null);
+    } else {
+      //if it is not open, update active state and open the component
+      setActiveState(title);
+    }
   };
 
   return (
@@ -40,7 +52,7 @@ export default function EditComponentWithCustomization({
 
       {isOpen && (
         <>
-        {/* each job is it's own list */}
+          {/* each job is it's own list */}
           {sectionData.map((job, jobIndex) => (
             <ul
               key={jobIndex}
@@ -99,19 +111,24 @@ export default function EditComponentWithCustomization({
             </button>
           </div>
 
-          <FeatureModal
+          {/* <FeatureModal
             addedFeatures={addedFields}
             setAddedFeatures={setAddedFields}
-          />
+          /> */}
         </>
       )}
 
-      <div className="flex justify-center mt-2">
+      <div className="flex justify-center w-full">
         <button
-          className="rounded-[1rem] border-gray-400 border-2 p-2 text-white"
+          // takes the previous value of showButton and returns the opposite of it
           onClick={toggleActive}
+          className="flex justify-center rounded-[1rem] border-gray-400 border-2 p-2 "
         >
-          {isOpen ? "Hide" : "Edit"} Section
+          {isOpen ? (
+            <Minus className="w-6 h-6 text-gray-400" />
+          ) : (
+            <Plus className="w-6 h-6 text-gray-400" />
+          )}
         </button>
       </div>
     </div>
